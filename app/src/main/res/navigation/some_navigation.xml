@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/some_navigation"
+    app:startDestination="@id/staaaaaaartFragment">
+    <fragment
+        android:id="@+id/staaaaaaartFragment"
+        android:name="com.kiloo.subwaysurfr.gimi.StaaaaaaartFragment"
+        android:label="fragment_staaaaaaart"
+        tools:layout="@layout/fragment_staaaaaaart" >
+        <action
+            android:id="@+id/action_staaaaaaartFragment_to_enddddddFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out"
+            app:destination="@id/enddddddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enddddddFragment"
+        android:name="com.kiloo.subwaysurfr.gimi.EnddddddFragment"
+        android:label="fragment_endddddd"
+        tools:layout="@layout/fragment_endddddd" />
+</navigation>

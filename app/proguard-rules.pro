@@ -1,0 +1,24 @@
+# Onesignal
+-dontwarn com.onesignal.**
+
+-keep class com.onesignal.ActivityLifecycleListenerCompat** {*;}
+
+# Facebook
+-keep class com.facebook.** {
+   *;
+}
+
+# Appsflyer
+-dontwarn com.appsflyer.AFKeystoreWrapper
+
+-keepnames class * implements android.os.Parcelable
+-keepclassmembers class * implements android.os.Parcelable {
+  public static final *** CREATOR;
+}
+#Lottie
+-keep class com.airbnb.lottie.** {*;}
+-dontwarn com.airbnb.lottie.**
+
+
+-keep class kotlinx.coroutines.**
+-dontwarn kotlinx.coroutines.**
