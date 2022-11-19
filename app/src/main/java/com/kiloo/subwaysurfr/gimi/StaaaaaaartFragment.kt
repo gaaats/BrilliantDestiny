@@ -42,8 +42,9 @@ class StaaaaaaartFragment : Fragment() {
             makeCycleUpAndDovnAlpha()
             isCreated = false
             binding.btnPressMe.setOnClickListener {
-                if (currentProgress == 99) {
+                if (currentProgress >= 99) {
                     findNavController().navigate(R.id.action_staaaaaaartFragment_to_enddddddFragment)
+                    currentProgress = 1
                 }
                 binding.progBarSplashScrn.progress = currentProgress
                 currentProgress += 1
@@ -60,6 +61,11 @@ class StaaaaaaartFragment : Fragment() {
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onPause() {
+        currentProgress = 1
+        super.onPause()
     }
 
     override fun onDestroy() {

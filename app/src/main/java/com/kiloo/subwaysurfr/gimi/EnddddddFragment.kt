@@ -37,7 +37,6 @@ class EnddddddFragment : Fragment() {
                 "You have already earned ${Random.nextInt(from = 10, until = 500)} points!!!",
                 Snackbar.LENGTH_LONG
             ).show()
-            requireActivity().onBackPressed()
 
             binding.btnExit.setOnClickListener {
                 initAlertDialog()

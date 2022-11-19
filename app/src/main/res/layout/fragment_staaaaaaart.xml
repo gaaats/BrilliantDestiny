@@ -183,9 +183,22 @@
         android:layout_width="290dp"
         android:layout_height="290dp"
         android:src="@drawable/monster"
+        android:elevation="-1dp"
         app:layout_constraintEnd_toEndOf="@id/guideline_vert_95"
         app:layout_constraintStart_toStartOf="@id/guideline_vert_05"
         app:layout_constraintTop_toTopOf="@id/guideline_hor_30" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lighttt"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        android:padding="50dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_vert_95"
+        app:layout_constraintStart_toStartOf="@id/guideline_vert_05"
+        app:layout_constraintTop_toTopOf="@id/guideline_hor_30"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/light" />
 
 
     <ProgressBar
