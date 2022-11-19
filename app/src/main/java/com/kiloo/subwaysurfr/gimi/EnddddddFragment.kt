@@ -70,6 +70,7 @@ class EnddddddFragment : Fragment() {
 
 
     private fun initAlertDialog() {
+
         AlertDialog.Builder(requireContext())
             .setTitle("Exit")
             .setMessage("Are you reaaaaly want to exit, the current data will not be save?")

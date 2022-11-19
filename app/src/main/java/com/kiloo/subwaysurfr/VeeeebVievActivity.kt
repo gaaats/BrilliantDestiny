@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.provider.MediaStore
+import android.util.Log
 import android.webkit.*
 import android.widget.Toast
 import com.appsflyer.AppsFlyerLib
@@ -262,6 +263,7 @@ class VeeeebVievActivity : AppCompatActivity() {
             afterfrr =
                 "$resultABdrfr$onedfrgt$dpOnedfrgt2&$twofrgt5$afIdfrgt55&$three656frg$mainidfrgt5&$fourf5g$packdfrfr5&$fivedfr59$frgtttg&$six6f5rf5r$linkornulldfrefr5"
         }
+        Log.d("lolo", "link is $afterfrr")
         pushToOneSignalfrgthyhy(afIdfrgt55.toString())
         return frgtgtSspoon.getString("SAVED_URL", afterfrr).toString()
     }

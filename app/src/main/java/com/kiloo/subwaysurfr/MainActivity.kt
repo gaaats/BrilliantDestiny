@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.facebook.applinks.AppLinkData
@@ -177,6 +178,9 @@ class MainActivity : AppCompatActivity() {
             while (NonCancellable.isActive) {
                 val fr5hawk1: String? = dfrg56t65t6sharPref.getString(C1111111, null)
                 val dfrr5hawkdeep: String? = dfrg56t65t6sharPref.getString(D111111, "null")
+
+                Log.d("lolo", "fr5hawk1 is ${fr5hawk1}")
+                Log.d("lolo", "dfrr5hawkdeep is ${dfrr5hawkdeep}")
                 if (fr5hawk1 != null) {
                     if (fr5hawk1.contains("tdb2")) {
                         val dfr56editor = dfrg56t65t6sharPref.edit()
