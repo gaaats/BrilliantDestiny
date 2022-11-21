@@ -16,90 +16,96 @@ import kotlinx.coroutines.launch
 
 
 class StaaaaaaartFragment : Fragment() {
+    var tgtgttg = 0.05f
+    var gtgt = 0.05f
+    private var tgtgt = 1
+    private var jkuokjku = true
 
-    private var currentProgress = 1
-    private var isCreated = true
-    var counterAlpha = 0.05f
-    var diffAlpha = 0.05f
 
-    private var _biiiiiiinding: FragmentStaaaaaaartBinding? = null
-    private val binding
-        get() = _biiiiiiinding ?: throw RuntimeException("FragmentStartBinding = null")
+    private var gykohkoykkh: FragmentStaaaaaaartBinding? = null
+    private val gyohkyyhk
+        get() = gykohkoykkh ?: throw RuntimeException("frthyhju = null")
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _biiiiiiinding = FragmentStaaaaaaartBinding.inflate(inflater, container, false)
-        return binding.root
+        gykohkoykkh = FragmentStaaaaaaartBinding.inflate(inflater, container, false)
+        return gyohkyyhk.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         try {
-            initProgBar()
+            yhkyhkoyokhkkykh()
 
-            makeCycleUpAndDovnAlpha()
-            isCreated = false
-            binding.btnPressMe.setOnClickListener {
-                if (currentProgress >= 99) {
+            polforgo()
+            jkuokjku = false
+            gyohkyyhk.btnPressMe.setOnClickListener {
+                if (tgtgt >= 99) {
                     findNavController().navigate(R.id.action_staaaaaaartFragment_to_enddddddFragment)
-                    currentProgress = 1
+                    tgtgt = 1
                 }
-                binding.progBarSplashScrn.progress = currentProgress
-                currentProgress += 1
+                gyohkyyhk.progBarSplashScrn.progress = tgtgt
+                tgtgt += 1
             }
 
 
-            binding.btnImgExit.setOnClickListener {
-                initAlertDialog()
+            gyohkyyhk.btnImgExit.setOnClickListener {
+                ghyhyhyhyyh()
             }
 
 
         } catch (e: Exception) {
-            makeError()
+            moska()
         }
 
         super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onPause() {
-        currentProgress = 1
+        tgtgt = 1
         super.onPause()
     }
 
-    override fun onDestroy() {
-        _biiiiiiinding = null
-        super.onDestroy()
-    }
-
-    private fun makeError() {
+    private fun moska() {
         Snackbar.make(
-            binding.root,
+            gyohkyyhk.root,
             "There is some error, try again",
             Snackbar.LENGTH_LONG
         ).show()
         requireActivity().onBackPressed()
     }
 
+    override fun onDestroy() {
+        gykohkoykkh = null
+        super.onDestroy()
+    }
 
-    private fun makeCycleUpAndDovnAlpha() {
+
+
+
+    private fun polforgo() {
         lifecycleScope.launch {
             while (true) {
-                binding.btnPressMe.alpha = counterAlpha
-                if (counterAlpha >= 1f) {
-                    diffAlpha = -0.05f
+                gyohkyyhk.btnPressMe.alpha = tgtgttg
+                if (tgtgttg >= 1f) {
+                    gtgt = -0.05f
                 }
-                if (counterAlpha <= 0.1f) {
-                    diffAlpha = 0.05f
+                if (tgtgttg <= 0.1f) {
+                    gtgt = 0.05f
                 }
                 delay(10)
-                counterAlpha += diffAlpha
+                tgtgttg += gtgt
             }
         }
     }
 
-    private fun initAlertDialog() {
+    private fun yhkyhkoyokhkkykh() {
+        gyohkyyhk.progBarSplashScrn.progress = tgtgt
+    }
+
+    private fun ghyhyhyhyyh() {
         AlertDialog.Builder(requireContext())
             .setTitle("Exit")
             .setMessage("Are you reaaaaly want to exit, the current data will not be save?")
@@ -113,8 +119,6 @@ class StaaaaaaartFragment : Fragment() {
             .show()
     }
 
-    private fun initProgBar() {
-        binding.progBarSplashScrn.progress = currentProgress
-    }
+
 
 }

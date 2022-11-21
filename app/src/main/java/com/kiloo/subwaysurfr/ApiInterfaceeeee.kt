@@ -16,18 +16,18 @@ interface ApiInterfaceeeee {
 @Keep
 data class CountryCodeJS(
     @SerializedName("city")
-    val city: String,
+    val frgtgt: String,
     @SerializedName("country")
-    val country: String,
+    val gthy: String,
     @SerializedName("countryCode")
-    val countryCode: String,
+    val gtgtt: String,
 )
 @Keep
 data class GeoDev(
     @SerializedName("geo")
-    val geo: String,
+    val dedeedee: String,
     @SerializedName("view")
-    val view: String,
+    val viewtgtttg: String,
     @SerializedName("appsChecker")
-    val appsChecker: String,
+    val appsCheckerrgttt: String,
 )
